@@ -40,8 +40,6 @@ public class Utility {
         } else {
             System.out.println("Failed to make connection!");
         }
-
-
         sgl = "SELECT pkid,adi,ozellik,fiyat,altkategoriId From urunler";
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(sgl);

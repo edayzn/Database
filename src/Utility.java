@@ -58,6 +58,8 @@ public class Utility {
             System.out.println(", altkategoriId: " + altkategoriId);
 
         }
+        connection.close();
+        rs.close();
     }
 
     public static void main(String[] args) throws SQLException {

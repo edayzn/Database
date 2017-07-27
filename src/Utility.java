@@ -10,8 +10,7 @@ import java.sql.ResultSet;
 public class Utility {
     public static String sgl;
 
-    public static void main(String[] args) throws SQLException {
-
+    public void Goster() throws SQLException {
         System.out.println("-------- MySQL JDBC Connection Testing ------------");
 
         try {
@@ -19,8 +18,8 @@ public class Utility {
         } catch (ClassNotFoundException e) {
             System.out.println("Where is your MySQL JDBC Driver?");
 
-        Logger.getAnonymousLogger("Ops!"+e);
-         return;
+            Logger.getAnonymousLogger("Ops!" + e);
+            return;
         }
 
         System.out.println("MySQL JDBC Driver Registered!");
@@ -32,7 +31,7 @@ public class Utility {
         } catch (SQLException e) {
             System.out.println("Connection Failed! Check output console");
 
-            Logger.getAnonymousLogger("Ops!"+e);
+            Logger.getAnonymousLogger("Ops!" + e);
             return;
         }
 
@@ -43,7 +42,7 @@ public class Utility {
         }
 
 
-     sgl = "SELECT pkid,adi,ozellik,fiyat,altkategoriId From urunler";
+        sgl = "SELECT pkid,adi,ozellik,fiyat,altkategoriId From urunler";
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(sgl);
         while (rs.next()) {
@@ -59,6 +58,14 @@ public class Utility {
             System.out.print(", ozellik: " + ozellik);
             System.out.print(", fiyat: " + fiyat);
             System.out.println(", altkategoriId: " + altkategoriId);
+
         }
     }
+
+    public static void main(String[] args) throws SQLException {
+        Utility gst = new Utility();
+        gst.Goster();
+    }
 }
+
+

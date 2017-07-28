@@ -12,11 +12,11 @@ public class Utility {
 
     public static void main(String[] args) throws SQLException {
         Utility gst = new Utility();
+        gst.baglan();
         gst.goster();
     }
 
-    public  void baglan(){
-
+    public  void baglan() throws SQLException {
     try {
         Class.forName("com.mysql.jdbc.Driver");
     } catch (ClassNotFoundException e) {
@@ -38,10 +38,10 @@ public class Utility {
     } else {
         System.out.println("\n" +"Bağlantı kurulamadı!");
     }
+
     }
 
     public void goster() throws SQLException {
-        baglan();
         StringBuffer sgl = new StringBuffer("SELECT pkid,adi,ozellik,fiyat,altkategoriId From urunler");
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(String.valueOf(sgl));

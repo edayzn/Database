@@ -1,12 +1,11 @@
-import  java.util.logging.Logger;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.lang.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
-
-
+import org.apache.log4j.Logger;
 public class Utility {
  // public static String sgl;
     Connection connection = null;
@@ -17,26 +16,27 @@ public class Utility {
     }
 
     public  void baglan(){
-       System.out.println("-------- MySQL JDBC Connection Testing ------------");
+
     try {
         Class.forName("com.mysql.jdbc.Driver");
     } catch (ClassNotFoundException e) {
-        System.out.println("Where is your MySQL JDBC Driver?");
-        Logger.getAnonymousLogger("Hayda!" + e);
+        Logger logger = null;
+        logger.error("Hayda " + e);
+
         return;
     }
-    System.out.println("MySQL JDBC Driver Registered!");
     try {
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proje", "root", "123456");
     } catch (SQLException e) {
-        System.out.println("Connection Failed! Check output console");
-        Logger.getAnonymousLogger("Hayda!" + e);
+        System.out.println("Bağlantı Başarısız!");
+        Logger logger = null;
+        logger.error("Hayda " + e);
         return;
     }
     if (connection != null) {
-        System.out.println("You made it, take control your database now!");
+        System.out.println("Baglandı!");
     } else {
-        System.out.println("Failed to make connection!");
+        System.out.println("\n" +"Bağlantı kurulamadı!");
     }
     }
 

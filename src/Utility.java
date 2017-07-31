@@ -31,8 +31,8 @@ public class Utility {
     }
     try {
         connection = DriverManager.getConnection(URL,USER,PASS);
-
-    } catch (SQLException e) {
+    }
+    catch (SQLException e) {
         System.out.println("Connection Failed!");
         Logger logger = null;
         logger.error("Exception " + e);
@@ -44,7 +44,6 @@ public class Utility {
         System.out.println("Failed to make connection!");
     }
     }
-
     public void list() throws SQLException {
         StringBuffer sgl = new StringBuffer("SELECT id,product_name,attreibute,price,subcategoryId From products");
         Statement stm = connection.createStatement();

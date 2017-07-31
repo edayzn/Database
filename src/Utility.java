@@ -6,59 +6,63 @@ import java.lang.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import org.apache.log4j.Logger;
+
 public class Utility {
- // public static String sgl;
+
     Connection connection = null;
+
+    static final String URL="jdbc:mysql://localhost:3306/proje";
+    static final String USER="root";
+    static final String PASS="123456";
+
 
     public static void main(String[] args) throws SQLException {
         Utility gst = new Utility();
-        gst.baglan();
-        gst.goster();
+        gst.connect();
+        gst.list();
     }
 
-    public  void baglan() throws SQLException {
+    public  void connect() throws SQLException {
     try {
         Class.forName("com.mysql.jdbc.Driver");
     } catch (ClassNotFoundException e) {
         Logger logger = null;
-        logger.error("Hayda " + e);
-
+        logger.error("Exception" + e);
         return;
     }
     try {
-        connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/proje", "root", "123456");
+        connection = DriverManager.getConnection(URL,USER,PASS);
+
     } catch (SQLException e) {
-        System.out.println("Bağlantı Başarısız!");
+        System.out.println("Connection Failed!");
         Logger logger = null;
-        logger.error("Hayda " + e);
+        logger.error("Exception " + e);
         return;
     }
     if (connection != null) {
-        System.out.println("Baglandı!");
+        System.out.println("You made it, take control your database now!");
     } else {
-        System.out.println("\n" +"Bağlantı kurulamadı!");
+        System.out.println("Failed to make connection!");
+    }
     }
 
-    }
-
-    public void goster() throws SQLException {
+    public void list() throws SQLException {
         StringBuffer sgl = new StringBuffer("SELECT pkid,adi,ozellik,fiyat,altkategoriId From urunler");
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(String.valueOf(sgl));
         while (rs.next()) {
 
-            int pkid = rs.getInt("pkid");
-            String adi = rs.getString("adi");
-            String ozellik = rs.getString("ozellik");
-            int fiyat = rs.getInt("fiyat");
-            int altkategoriId = rs.getInt("altkategoriId");
+            int id = rs.getInt("pkid");
+            String name = rs.getString("adi");
+            String attreibute = rs.getString("ozellik");
+            int price = rs.getInt("fiyat");
+            int subcategoryId = rs.getInt("altkategoriId");
 
-            System.out.print("ID: " + pkid);
-            System.out.print(", adi: " + adi);
-            System.out.print(", ozellik: " + ozellik);
-            System.out.print(", fiyat: " + fiyat);
-            System.out.println(", altkategoriId: " + altkategoriId);
-
+            System.out.print("ID: " + id);
+            System.out.print(", adi: " + name);
+            System.out.print(", ozellik: " + attreibute);
+            System.out.print(", fiyat: " + price);
+            System.out.println(", altkategoriId: " + subcategoryId);
         }
         connection.close();
         rs.close();

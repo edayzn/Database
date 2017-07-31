@@ -46,19 +46,19 @@ public class Utility {
     }
 
     public void list() throws SQLException {
-        StringBuffer sgl = new StringBuffer("SELECT pkid,adi,ozellik,fiyat,altkategoriId From urunler");
+        StringBuffer sgl = new StringBuffer("SELECT id,product_name,attreibute,price,subcategoryId From products");
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(String.valueOf(sgl));
         while (rs.next()) {
 
-            int id = rs.getInt("pkid");
-            String name = rs.getString("adi");
-            String attreibute = rs.getString("ozellik");
-            int price = rs.getInt("fiyat");
-            int subcategoryId = rs.getInt("altkategoriId");
+            int id = rs.getInt("id");
+            String product_name = rs.getString("product_name");
+            String attreibute = rs.getString("attreibute");
+            int price = rs.getInt("price");
+            int subcategoryId = rs.getInt("subcategoryId");
 
             System.out.print("ID: " + id);
-            System.out.print(", name: " + name);
+            System.out.print(", name: " + product_name);
             System.out.print(", attreibute: " + attreibute);
             System.out.print(", price: " + price);
             System.out.println(", subcategoryId: " + subcategoryId);

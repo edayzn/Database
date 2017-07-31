@@ -15,13 +15,11 @@ public class Utility {
     static final String USER="root";
     static final String PASS="123456";
 
-
     public static void main(String[] args) throws SQLException {
         Utility gst = new Utility();
         gst.connect();
         gst.list();
     }
-
     public  void connect() throws SQLException {
     try {
         Class.forName("com.mysql.jdbc.Driver");

@@ -57,10 +57,10 @@ public class Utility {
             int subcategoryId = rs.getInt("altkategoriId");
 
             System.out.print("ID: " + id);
-            System.out.print(", adi: " + name);
-            System.out.print(", ozellik: " + attreibute);
-            System.out.print(", fiyat: " + price);
-            System.out.println(", altkategoriId: " + subcategoryId);
+            System.out.print(", name: " + name);
+            System.out.print(", attreibute: " + attreibute);
+            System.out.print(", price: " + price);
+            System.out.println(", subcategoryId: " + subcategoryId);
         }
         connection.close();
         rs.close();

@@ -11,9 +11,10 @@ public class Utility {
 
     Connection connection = null;
 
-    static final String URL="jdbc:mysql://localhost:3306/proje";
-    static final String USER="root";
-    static final String PASS="123456";
+    public static final String URL="jdbc:mysql://localhost:3306/proje";
+    public static final String USER="root";
+    public static final String PASS="123456";
+    public static final String DRİVER="com.mysql.jdbc.Driver";
 
     public static void main(String[] args) throws SQLException {
         Utility gst = new Utility();
@@ -22,7 +23,7 @@ public class Utility {
     }
     public  void connect() throws SQLException {
     try {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName(DRİVER);
     } catch (ClassNotFoundException e) {
         Logger logger = null;
         logger.error("Exception" + e);

@@ -24,15 +24,14 @@ public class Utility {
     public  void connect() throws SQLException {
     try {
         Class.forName(DRİVER);
-    } catch (ClassNotFoundException e) {
+        connection = DriverManager.getConnection(URL,USER,PASS);
+    }
+    catch (ClassNotFoundException e) {
         Logger logger = null;
         logger.error("Exception" + e);
         return;
     }
-    try {
-        connection = DriverManager.getConnection(URL,USER,PASS);
-    }
-    catch (SQLException e) {
+     catch (SQLException e) {
         System.out.println("Connection Failed!");
         Logger logger = null;
         logger.error("Exception " + e);

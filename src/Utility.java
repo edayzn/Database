@@ -31,10 +31,11 @@ public class Utility {
         logger.error("Exception" + e);
         return;
     }
-     catch (SQLException e) {
+    catch (SQLException e) {
         System.out.println("Connection Failed!");
         Logger logger = null;
         logger.error("Exception " + e);
+
         return;
     }
     if (connection != null) {
@@ -43,7 +44,7 @@ public class Utility {
         System.out.println("Failed to make connection!");
     }
     }
-    public void list() throws SQLException {
+    public void show() throws SQLException {
         StringBuffer sgl = new StringBuffer("SELECT id,product_name,attreibute,price,subcategoryId From products");
         Statement stm = connection.createStatement();
         ResultSet rs = stm.executeQuery(String.valueOf(sgl));
